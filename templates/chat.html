@@ -7,19 +7,20 @@
 </head>
 <body>
 
-	<h1>This is a test ...</h1>
-	<h2>IT'S A TRAAAAAAAAAAAAAAAAAAAAP !</h2>
-	<img src="http://digitalclaritygroup.com/wordpress/wp-content/uploads/2012/08/trap.png" alt="trap">
+	<h1>Bienvenue sur ce tchat tout en Node JS !</h1>
 
-	<button>Message du client</button>
+	<input type="text">
+	<button id='send'>Envoyer</button>
 
 	<p></p>
+
+	<button id='server'>Message du serveur ?</button>
 
 	<script>
 
 		var socket = io();
 
-		var btn = document.getElementsByTagName('button')[0];
+		var btn = document.getElementById('send');
 		btn.addEventListener('click', function(){
 			socket.emit('msg', 'Un super message !')
 		});
@@ -27,8 +28,6 @@
 		socket.on('confirm', function(msg){
 			document.getElementsByTagName('p')[0].innerHTML = msg;
 		});
-
-
 
 	</script>
 	
