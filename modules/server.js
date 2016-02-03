@@ -45,7 +45,7 @@ module.exports = function(app){
 		route : function() {
 
 			exp.get('/', function (req, res) {
-				res.sendFile(app.root_path + '/templates/index.html');
+				res.sendFile(app.root_path + '/templates/chat.html');
 			});
 		}
 	}	
