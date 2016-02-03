@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Test HTML avec Express</title>
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+</head>
+<body>
+
+	<h1>This is a test ...</h1>
+	<h2>IT'S A TRAAAAAAAAAAAAAAAAAAAAP !</h2>
+	<img src="http://digitalclaritygroup.com/wordpress/wp-content/uploads/2012/08/trap.png" alt="trap">
+
+	<button>Message du client</button>
+
+	<p></p>
+
+	<script>
+
+		var socket = io();
+
+		var btn = document.getElementsByTagName('button')[0];
+		btn.addEventListener('click', function(){
+			socket.emit('msg', 'Un super message !')
+		});
+
+		socket.on('confirm', function(msg){
+			document.getElementsByTagName('p')[0].innerHTML = msg;
+		});
+
+
+
+	</script>
+	
+</body>
+</html>
