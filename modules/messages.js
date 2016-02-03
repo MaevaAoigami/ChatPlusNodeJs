@@ -7,7 +7,7 @@
 var exp = require('express')();
 var http = require('http');
 
-module.exports = function(){
+module.exports = function(app){
 	
 	'use strict';
 
@@ -19,9 +19,10 @@ module.exports = function(){
 
 		**/		
 
-		receive : function() {
+		receive : function(content) {
 
-		
+			app.messages.emit(content);
+			
 		},
 
 		/** 
@@ -32,7 +33,8 @@ module.exports = function(){
 
 		send : function() {
 
-		
+			app.socket.emit('newmessage', content);
+
 		},
 
 		/** 

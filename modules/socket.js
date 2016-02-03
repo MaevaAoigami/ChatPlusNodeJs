@@ -37,13 +37,14 @@ module.exports = function(app) {
 			this.io.on('connection', function(socket){
 				console.log('un user est connecté');
 
-				socket.on('msg', function(content){
-					console.log(content);
-
-					app.socket.io.emit('confirm', 'Bien reçu ! Signé : le serveur')
-				});
+				socket.on('msg', app.messages.receive);
 
 			});
+		},
+
+		emit : function(chan, content) {
+
+			app.socket.io.emit(chan, content)
 		}
 
 	}

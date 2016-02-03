@@ -9,24 +9,21 @@
 
 	<h1>Bienvenue sur ce tchat tout en Node JS !</h1>
 
-	<input type="text">
-	<button id='send'>Envoyer</button>
+	<input type="text" id="msg">
+	<button>Envoyer</button>
 
-	<p></p>
-
-	<button id='server'>Message du serveur ?</button>
+	<ul></ul>
 
 	<script>
-
 		var socket = io();
 
-		var btn = document.getElementById('send');
+		var btn = document.getElementsByTagName('button')[0];
 		btn.addEventListener('click', function(){
-			socket.emit('msg', 'Un super message !')
+			socket.emit('msg', $('#msg').val());
 		});
 
-		socket.on('confirm', function(msg){
-			document.getElementsByTagName('p')[0].innerHTML = msg;
+		socket.on('newmessage', function(msg){
+			$('ul').append('<li>'+ msg + '</li>');
 		});
 
 	</script>
